@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+ <head>
+     <script>
+         function Database(buttonName)
+         {
+            switch(buttonName){
+                case "Insert":
+                document.write("Record Inserted..");
+                break;
+                case "Update":
+                document.write("Record Updated");
+                break;
+                case "Delete":
+                document.write("Record Deleted");
+                break;
+            }
+         }
+     </script>
+ </head>
+ <body>
+     <button name="Insert" onclick="Database(this.name)">Insert</button>
+     <button name="Update" onclick="Database(this.name)">Update</button>
+     <button name="Delete" onclick="Database(this.name)">Delete</button>
+ </body>
+</html>

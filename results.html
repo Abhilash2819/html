@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Results</title>
+        <script>
+            var data = [
+                {Name: "TV", Category: "Electronics"},
+                {Name: "Mobile", Category: "Electronics"},
+                {Name: "Shirt", Category:"Fashion"},
+                {Name: "Nike Casuals", Category: "Footwear"}
+            ]
+            function bodyload(){
+                var str = location.search;
+                var term = str.substring(str.indexOf("=")+1);
+                var products = data.filter(function(product){return product.Category==term});
+                var lstProducts = document.getElementById("lstProducts");
+                for(var item of products) {
+                   
+                    var li = document.createElement("li");
+                    li.innerHTML = item.Name;
+                    lstProducts.appendChild(li);
+                }
+            }
+        </script>
+    </head>
+    <body onload="bodyload()">
+        <h2>Search Results</h2>
+        <ol id="lstProducts">
+
+        </ol>
+    </body>
+</html>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Results</title>
+        <script>
+            var data = [
+                {Name: "TV", Category: "Electronics"},
+                {Name: "Mobile", Category: "Electronics"},
+                {Name: "Shirt", Category:"Fashion"},
+                {Name: "Nike Casuals", Category: "Footwear"}
+            ];
+            
+            function bodyload(){
+              
+                var str = location.search;
+                
+                
+                var term = decodeURIComponent(str.substring(str.indexOf("=") + 1));
+                
+
+             var products = data.filter(function(product){
+                    return product.Category.toLowerCase() === term.toLowerCase();
+                });
+                
+               
+                var lstProducts = document.getElementById("lstProducts");
+                
+                
+                lstProducts.innerHTML = "";
+                
+        
+                for(var item of products) {
+                    var li = document.createElement("li");
+                    li.innerHTML = item.Name;
+                    lstProducts.appendChild(li);
+                }
+                
+           
+                if (products.length === 0) {
+                    lstProducts.innerHTML = "<li>No products found for the selected category.</li>";
+                }
+            }
+        </script>
+    </head>
+    <body onload="bodyload()">
+        <h2>Search Results</h2>
+        <ol id="lstProducts">
+           
+        </ol>
+    </body>
+</html>
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Intra Document Links</title>
+        <style>
+            button{
+                position: fixed;
+                right: 100px;
+                top:30px;
+            }
+        </style>
+        <script>
+            function GetDetails(){
+                var loc = location.hash;
+                switch(loc){
+                    case "#html":
+                    alert("You Viewed HTML Tutorial");
+                    break;
+                    case "#js":
+                    alert("You searched form JavaScript");
+                    break;
+                    case "#css":
+                    alert("How do you rate your recent CSS tutorial experience");
+                    break;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <h1 id="toc">Table of Contents</h1>
+        <ol>
+            <li><a href="#html">HTML Tutorial</a></li>
+            <li><a href="#css">CSS Examples</a></li>
+            <li><a href="#js">JavaScript Language</a></li>
+        </ol>
+        <button onclick="GetDetails()">Recently Viewed</button>
+        <h4 id="html">HTML Tutorial <a href="#toc"><img src="Images/backtotop.jpg" width="30" height="20"></a></h4>
